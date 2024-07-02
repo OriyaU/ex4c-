@@ -1,0 +1,97 @@
+Tree Data Structure Implementation
+
+oriya7914@gmail.com
+
+This project implements a flexible tree data structure in C++, supporting various traversal methods and specialized iterators. The implementation allows for the creation of k-ary trees, with operations to add nodes and traverse the tree using different strategies.
+Features
+
+    Tree Class: The Tree class template supports the creation of k-ary trees, where each node can have up to K children. 
+    Node Class: The Node class represents individual nodes in the tree, holding a value of type T and maintaining child relationships.So, the Tree Node can be from type integer or string and even complex numbers.
+    Traversal Methods: Supports several traversal methods including Depth-First Search (DFS), Breadth-First Search (BFS), Pre-Order, Post-Order, and In-Order traversals.
+    Heap Iterator: For binary trees (k=2), provides a heap iterator that allows traversal in heap order.
+
+Classes and Methods
+
+Class Hierarchy
+
+The project is structured with the following class hierarchy:
+
+    Tree:
+        BinaryTree: Inherits from Tree, implements binary tree-specific operations.
+        KaryTree: Inherits from Tree, supports k-ary tree operations.
+
+Tree Class
+Constructors
+
+    Tree(size_t K = 2): Constructs a tree with an optional maximum number of children per node (K).
+
+Methods
+
+    add_root(Node<T>& node): Sets the root of the tree.
+    add_sub_node(Node<T>& parent, Node<T>& child): Adds a child node to a parent node.
+    get_root(): Retrieves the root node of the tree.
+
+Traversal Methods
+
+    DFS: Depth-First Search traversal using an iterator (DFSIterator).
+    BFS: Breadth-First Search traversal using an iterator (BFSIterator).
+    Pre-Order: Pre-order traversal using an iterator (PreOrderIterator).
+    Post-Order: Post-order traversal using an iterator (PostOrderIterator).
+    In-Order: In-order traversal using an iterator (InOrderIterator).
+
+There is also Complex class.
+
+Node Class
+Attributes
+
+    value: Holds the value of type T associated with the node.
+    children: Vector of pointers to child nodes.
+
+Heap Iterator
+
+    For binary trees (k=2), provides an iterator (HeapIterator) that traverses nodes in heap order.
+
+Usage
+
+Example usage demonstrating tree creation, node addition, and traversal methods.
+
+cpp
+
+#include "Tree.hpp"
+#include "Node.hpp"
+
+int main() {
+    // Example usage
+    // Create a tree and add nodes
+    Tree<int> tree(4); // 4-ary tree
+    Node<int> root(1);
+    Node<int> child1(2);
+    // Add nodes to the tree
+    tree.add_root(root);
+    tree.add_sub_node(root, child1);
+
+    // Perform traversals
+    // Example: Pre-order traversal
+    for (auto node = tree.begin_pre_order(); node != tree.end_pre_order(); ++node) {
+        // Process node
+    }
+
+    return 0;
+}
+using:
+To run the project commend "make" then "./makeTree".
+
+Testing
+
+The project includes unit tests using the doctest framework to validate the correctness of tree operations and traversal methods.
+Dependencies. In order to  run the tests you need to comment "make tests".
+
+Libraries Used
+
+The project makes use of the following libraries:
+
+    Standard Library: Utilized for basic data structures and algorithms.
+    Boost C++ Libraries: Specifically, Boost for handling complex numbers and heap operations.
+    STL: Standard Template Library for containers and algorithms.
+SFML (Simple and Fast Multimedia Library) for tree visualization (optional).
+
